@@ -67,7 +67,11 @@ export class DmdbDriver implements Driver {
         "text",
         "tinyint",
         "double",
-        "datetime"
+        "datetime",
+        "json",
+        "jsonb",
+        "simple-array",
+        "simple-json"
     ];
     spatialTypes: ColumnType[] = [];
     withLengthColumnTypes: ColumnType[] = [
@@ -400,6 +404,12 @@ export class DmdbDriver implements Driver {
             return "clob";
 
         } else if (column.type === "simple-json") {
+            return "clob";
+
+        } else if (column.type === "json") {
+            return "clob";
+
+        } else if (column.type === "jsonb") {
             return "clob";
 
         } else {
