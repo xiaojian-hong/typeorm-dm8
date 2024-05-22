@@ -260,7 +260,7 @@ export class DmdbQueryRunner extends BaseQueryRunner implements QueryRunner {
      * @returns 
      */
     async queryDefend(query: string, parameters: any[]|undefined, err:any) {
-        const errCodeMap:any = {"-2124":'表已存在',"-2140":'索引已存在'}      // 达梦错误码
+        const errCodeMap:any = {"-2124":'表已存在',"-2140":'索引已存在',"-2109": '无效的约束名',"-3236": '此列列表已索引'}      // 达梦错误码
 
 
         // sql数据库版本处理

@@ -337,6 +337,8 @@ export class DmdbDriver implements Driver {
 
         } else if (columnMetadata.type === "simple-json") {
             return DateUtils.simpleJsonToString(value);
+        } else if (columnMetadata.type === "json" || columnMetadata.type === "jsonb") {
+            return JSON.stringify(value);
         }
 
         return value;
@@ -362,7 +364,7 @@ export class DmdbDriver implements Driver {
             || columnMetadata.type === "timestamp with local time zone") {
             value = DateUtils.normalizeHydratedDate(value);
 
-        } else if (columnMetadata.type === "json") {
+        } else if (columnMetadata.type === "json" || columnMetadata.type === "jsonb") {
             value = JSON.parse(value);
 
         } else if (columnMetadata.type === "simple-array") {
@@ -562,7 +564,7 @@ export class DmdbDriver implements Driver {
 
     // 支持RETURNING / OUTPUT语句
     isReturningSqlSupported(): boolean {
-        return true;
+        return false;
     }
 
     // 不支持生成uuid
