@@ -47,4 +47,19 @@ export interface DmdbConnectionCredentialsOptions {
      * Embedded TNS Connection String
      */
     readonly connectString?: string;
+
+    /**
+     * Pool min size.
+     */
+    readonly poolMin?: number;
+
+    /**
+     * Pool max size.
+     */
+    readonly poolMax?: number;
+
+    /**
+     * Connection Pool Alias.
+     */
+    readonly poolAlias?: string;
 }

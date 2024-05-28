@@ -644,9 +644,9 @@ export class DmdbDriver implements Driver {
                 connectString,
                 schema: credentials.database,
                 database: credentials.database,
-                poolMin: 1,
-                poolMax: 20,
-                poolAlias: 'DMl12skd5fi8',
+                poolMin: credentials.poolMin || 1,
+                poolMax: credentials.poolMax || 20,
+                poolAlias: credentials.poolAlias || 'DMl12skd5fi8',
             }, (err:Error, pool:any) => {
                 if (err){
                     console.trace('dmdb connection fail,the connectUrl is: ', connectString);                    
