@@ -95,11 +95,11 @@ export class DmdbQueryRunner extends BaseQueryRunner implements QueryRunner {
             throw err;
         }
 
-        if (this.transactionDepth === 0) {
-            await this.query("SET TRANSACTION ISOLATION LEVEL " + isolationLevel);
-        } else {
-            await this.query(`SAVEPOINT typeorm_${this.transactionDepth}`);
-        }
+        // if (this.transactionDepth === 0) {
+        //     await this.query("SET TRANSACTION ISOLATION LEVEL " + isolationLevel);
+        // } else {
+        //     await this.query(`SAVEPOINT typeorm_${this.transactionDepth}`);
+        // }
         this.transactionDepth += 1;
 
         await this.broadcaster.broadcast('AfterTransactionStart');
